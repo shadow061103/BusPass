@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="coreprofiler" Version="1.1.4" />
+    <PackageReference Include="CoreProfiler.Web" Version="1.1.4" />
+  </ItemGroup>
+
+</Project>
