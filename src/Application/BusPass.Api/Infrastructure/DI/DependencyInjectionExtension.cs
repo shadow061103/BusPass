@@ -28,6 +28,9 @@ namespace BusPass.Api.Infrastructure.DI
 
             services.AddSingleton<IApiHelper, ApiHelper>();
 
+            //Applicaiton
+            AddApplicationDependencyInjection(services);
+
             // Services
             AddServiceRegister(services);
 
@@ -36,8 +39,14 @@ namespace BusPass.Api.Infrastructure.DI
             return services;
         }
 
+        private static void AddApplicationDependencyInjection(this IServiceCollection services)
+        {
+        }
+
         private static void AddRepositoryRegister(IServiceCollection services)
         {
+            services.AddSingleton<IDatabaseHelper, DatabaseHelper>();
+            services.AddSingleton<IUrlHelper, UrlHelper>();
         }
 
         private static void AddServiceRegister(IServiceCollection services)
