@@ -1,4 +1,6 @@
-﻿using BusPass.Repository.Infrastructure.Helpers;
+﻿using BusPass.Repository.Implements;
+using BusPass.Repository.Infrastructure.Helpers;
+using BusPass.Repository.Interfaces;
 using BusPass.Scheduler.Interfaces;
 using BusPass.Scheduler.Jobs;
 using Microsoft.Extensions.Configuration;
@@ -59,6 +61,7 @@ namespace BusPass.Scheduler.Infrastructure.DI
         {
             services.AddSingleton<IDatabaseHelper, DatabaseHelper>();
             services.AddSingleton<IUrlHelper, UrlHelper>();
+            services.AddScoped<IBusRouteProxy, BusRouteProxy>();
         }
 
         private static void AddServiceRegister(IServiceCollection services)
