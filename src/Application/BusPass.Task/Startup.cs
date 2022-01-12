@@ -137,8 +137,11 @@ namespace BusPass.Task
                 }
             );
 
-            //var jobTrigger = serviceProvider.GetService<IJobTrigger>();
-            //jobTrigger.OnStart();
+            if (env.IsDevelopment())
+            {
+                var jobTrigger = serviceProvider.GetService<IJobTrigger>();
+                jobTrigger.OnStart();
+            }
         }
     }
 }

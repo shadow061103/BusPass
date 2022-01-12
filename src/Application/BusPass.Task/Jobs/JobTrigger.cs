@@ -1,4 +1,5 @@
 ﻿using BusPass.Task.Interfaces;
+using Hangfire;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,12 @@ namespace BusPass.Task.Jobs
     {
         public void OnStart()
         {
-            throw new NotImplementedException();
+            RecurringJob.AddOrUpdate<IBusInitialJob>
+                 (
+                 x => x.DataInitialCreateJob(null),
+                 "0 8 * * *",
+                 TimeZoneInfo.Local
+                 );
         }
     }
 }

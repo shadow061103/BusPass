@@ -52,6 +52,7 @@ namespace BusPass.Task.Infrastructure.DI
         private static void AddApplicationDependencyInjection(this IServiceCollection services)
         {
             services.AddScoped<IJobTrigger, JobTrigger>();
+            services.AddScoped<IBusInitialJob, BusInitialJob>();
         }
 
         private static void AddRepositoryRegister(IServiceCollection services)
