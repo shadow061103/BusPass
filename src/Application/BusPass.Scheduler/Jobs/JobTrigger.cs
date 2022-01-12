@@ -1,11 +1,11 @@
-﻿using BusPass.Task.Interfaces;
+﻿using BusPass.Scheduler.Interfaces;
 using Hangfire;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusPass.Task.Jobs
+namespace BusPass.Scheduler.Jobs
 {
     public class JobTrigger : IJobTrigger
     {

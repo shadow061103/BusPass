@@ -1,6 +1,6 @@
 ﻿using BusPass.Repository.Infrastructure.Helpers;
-using BusPass.Task.Interfaces;
-using BusPass.Task.Jobs;
+using BusPass.Scheduler.Interfaces;
+using BusPass.Scheduler.Jobs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,7 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace BusPass.Task.Infrastructure.DI
+namespace BusPass.Scheduler.Infrastructure.DI
 {
     /// <summary>
     /// DI

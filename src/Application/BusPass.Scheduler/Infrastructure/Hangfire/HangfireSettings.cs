@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusPass.Task.Infrastructure.Hangfire
+namespace BusPass.Scheduler.Infrastructure.Hangfire
 {
     public class HangfireSettings
     {

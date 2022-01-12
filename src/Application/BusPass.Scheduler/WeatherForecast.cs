@@ -1,6 +1,6 @@
 using System;
 
-namespace BusPass.Task
+namespace BusPass.Scheduler
 {
     public class WeatherForecast
     {

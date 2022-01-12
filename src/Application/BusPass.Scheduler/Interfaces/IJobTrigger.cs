@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusPass.Task.Interfaces
+namespace BusPass.Scheduler.Interfaces
 {
     public interface IJobTrigger
     {

@@ -272,4 +272,4 @@ __pycache__/
 bin/
 obj/
 /src/Application/BusPass.Api/pfx.json
-/src/Application/BusPass.Task/pfx.json
+/src/Application/BusPass.Scheduler/pfx.json

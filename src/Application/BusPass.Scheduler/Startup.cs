@@ -1,6 +1,6 @@
-using BusPass.Task.Infrastructure.DI;
-using BusPass.Task.Infrastructure.Hangfire;
-using BusPass.Task.Interfaces;
+using BusPass.Scheduler.Infrastructure.DI;
+using BusPass.Scheduler.Infrastructure.Hangfire;
+using BusPass.Scheduler.Interfaces;
 using CoreProfiler.Web;
 using Hangfire;
 using Hangfire.Console;
@@ -22,7 +22,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusPass.Task
+namespace BusPass.Scheduler
 {
     public class Startup
     {
@@ -87,7 +87,7 @@ namespace BusPass.Task
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BusPass.Task", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BusPass.Scheduler", Version = "v1" });
 
                 var basePath = AppContext.BaseDirectory;
                 var xmlFiles = Directory.EnumerateFiles(basePath, $"*.xml", SearchOption.TopDirectoryOnly);
@@ -113,7 +113,7 @@ namespace BusPass.Task
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BusPass.Task v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BusPass.Scheduler v1"));
 
             app.UseCoreProfiler();
 

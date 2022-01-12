@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusPass.Task.Controllers
+namespace BusPass.Scheduler.Controllers
 {
     [ApiController]
     [Route("[controller]")]
