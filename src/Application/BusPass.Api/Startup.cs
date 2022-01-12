@@ -1,3 +1,4 @@
+using BusPass.Repository.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,7 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using BusPass.Api.Infrastructure.DI;
 
 namespace BusPass.Api
 {
@@ -46,6 +50,7 @@ namespace BusPass.Api
             #endregion Swagger
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddDependencyInjection(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

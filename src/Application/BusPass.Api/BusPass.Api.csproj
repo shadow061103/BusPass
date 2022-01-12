@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\net5.0\BusPass.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="coreprofiler" Version="1.1.4" />
@@ -11,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\BusPass.Common\BusPass.Common.csproj" />
+    <ProjectReference Include="..\..\Repository\BusPass.Repository\BusPass.Repository.csproj" />
     <ProjectReference Include="..\..\Service\BusPass.Service\BusPass.Service.csproj" />
   </ItemGroup>
 

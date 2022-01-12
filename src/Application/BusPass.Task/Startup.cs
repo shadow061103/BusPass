@@ -1,3 +1,4 @@
+using BusPass.Task.Infrastructure.DI;
 using BusPass.Task.Infrastructure.Hangfire;
 using BusPass.Task.Interfaces;
 using CoreProfiler.Web;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -98,6 +100,8 @@ namespace BusPass.Task
             #endregion Swagger
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddDependencyInjection(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
