@@ -23,6 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusPass.Common", "src\Commo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C617C-8F0F-44E6-8E4B-994600DA009D}"
 	ProjectSection(SolutionItems) = preProject
+		doc\api_design.md = doc\api_design.md
 		docker.txt = docker.txt
 	EndProjectSection
 EndProject
