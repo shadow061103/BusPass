@@ -16,6 +16,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using BusPass.Api.Infrastructure.DI;
+using BusPass.Api.Infrastructure.Middlerwares;
+using BusPass.Api.Infrastructure.Attribute;
 
 namespace BusPass.Api
 {
@@ -31,7 +33,10 @@ namespace BusPass.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<GeneralExceptionFilterAttribute>();
+            });
 
             #region Swagger
 
@@ -74,6 +79,8 @@ namespace BusPass.Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseExceptionhandler();
         }
     }
 }

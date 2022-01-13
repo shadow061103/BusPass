@@ -26,7 +26,7 @@ namespace BusPass.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var data = await _busRouteProxy.GetBusStopAsync("Taipei");
+            var data = await _busRouteProxy.GetBusStationAsync("Taipei");
             return Ok(data);
         }
     }

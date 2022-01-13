@@ -10,4 +10,9 @@
     <PackageReference Include="CoreProfiler.Web" Version="1.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Enums\" />
+  </ItemGroup>
+
 </Project>
