@@ -1,4 +1,5 @@
 ﻿using BusPass.Repository.Infrastructure.Helpers;
+using BusPass.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace BusPass.Api.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private readonly IApiHelper _apiHelper;
+        private readonly ICityBusProxy _busRouteProxy;
 
-        public TestController(IApiHelper apiHelper)
+        public TestController(ICityBusProxy busRouteProxy)
         {
-            _apiHelper = apiHelper;
+            _busRouteProxy = busRouteProxy;
         }
 
         /// <summary>
@@ -25,8 +26,7 @@ namespace BusPass.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var url = "https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/NewTaipei?%24top=30&%24format=JSON";
-            var data = await _apiHelper.GetPTXAsync<string>(url);
+            var data = await _busRouteProxy.GetBusStopAsync("Taipei");
             return Ok(data);
         }
     }

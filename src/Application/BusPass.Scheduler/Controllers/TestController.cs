@@ -11,9 +11,9 @@ namespace BusPass.Scheduler.Controllers
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private readonly IBusRouteProxy _busRouteProxy;
+        private readonly ICityBusProxy _busRouteProxy;
 
-        public TestController(IBusRouteProxy busRouteProxy)
+        public TestController(ICityBusProxy busRouteProxy)
         {
             _busRouteProxy = busRouteProxy;
         }
@@ -25,7 +25,7 @@ namespace BusPass.Scheduler.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var data = await _busRouteProxy.GetRouteAsync("Taipei");
+            var data = await _busRouteProxy.GetBusStationAsync("Taipei");
             return Ok(data);
         }
     }

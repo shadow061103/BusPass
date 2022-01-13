@@ -61,7 +61,7 @@ namespace BusPass.Scheduler.Infrastructure.DI
         {
             services.AddSingleton<IDatabaseHelper, DatabaseHelper>();
             services.AddSingleton<IUrlHelper, UrlHelper>();
-            services.AddScoped<IBusRouteProxy, BusRouteProxy>();
+            services.AddScoped<ICityBusProxy, CityBusProxy>();
         }
 
         private static void AddServiceRegister(IServiceCollection services)

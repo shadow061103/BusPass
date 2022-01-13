@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net;
+using BusPass.Repository.Interfaces;
+using BusPass.Repository.Implements;
 
 namespace BusPass.Api.Infrastructure.DI
 {
@@ -47,6 +49,7 @@ namespace BusPass.Api.Infrastructure.DI
         {
             services.AddSingleton<IDatabaseHelper, DatabaseHelper>();
             services.AddSingleton<IUrlHelper, UrlHelper>();
+            services.AddScoped<ICityBusProxy, CityBusProxy>();
         }
 
         private static void AddServiceRegister(IServiceCollection services)
