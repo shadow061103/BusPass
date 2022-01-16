@@ -1,9 +1,9 @@
-¤U¸ü
-docker pull microsoft/mssql-server-linux:latest
-cmd°õ¦æ
+ä¸‹è¼‰
+docker pull mcr.microsoft.com/mssql/server:2019-latest
+cmdåŸ·è¡Œ
 
 docker run --rm -d -e SA_PASSWORD=P@ssw0rd -e ACCEPT_EULA=Y -ti -p 1433:1433 -v D:/SideProject/BusPass/data:/var/opt/mssql/data mcr.microsoft.com/mssql/server:2019-latest
 
-¦øªA¾¹:127.0.0.1,1433
-±b¸¹:sa
-±K½X:P@ssw0rd
+ä¼ºæœå™¨:127.0.0.1,1433
+å¸³è™Ÿ:sa
+å¯†ç¢¼:P@ssw0rd
