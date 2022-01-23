@@ -3,6 +3,8 @@ using BusPass.Repository.Infrastructure.Helpers;
 using BusPass.Repository.Interfaces;
 using BusPass.Scheduler.Interfaces;
 using BusPass.Scheduler.Jobs;
+using BusPass.Service.Implements;
+using BusPass.Service.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -62,10 +64,17 @@ namespace BusPass.Scheduler.Infrastructure.DI
             services.AddSingleton<IDatabaseHelper, DatabaseHelper>();
             services.AddSingleton<IUrlHelper, UrlHelper>();
             services.AddScoped<ICityBusProxy, CityBusProxy>();
+
+            //repository
+            services.AddScoped<IBusOperatorRepository, BusOperatorRepository>();
+            services.AddScoped<IBusRouteRepository, BusRouteRepository>();
+            services.AddScoped<IBusSubRouteRepositoey, BusSubRouteRepositoey>();
+            services.AddScoped<IBusRouteRelationRepository, BusRouteRelationRepository>();
         }
 
         private static void AddServiceRegister(IServiceCollection services)
         {
+            services.AddScoped<IBusRouteService, BusRouteService>();
         }
     }
 }

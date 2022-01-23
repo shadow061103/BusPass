@@ -24,7 +24,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{223C617C-8F0F-44E6-8E4B-994600DA009D}"
 	ProjectSection(SolutionItems) = preProject
 		doc\api_design.md = doc\api_design.md
-		docker.txt = docker.txt
+		doc\docker.txt = doc\docker.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusPass.Scheduler", "src\Application\BusPass.Scheduler\BusPass.Scheduler.csproj", "{086A4BD3-C96F-493A-BC78-E57E1572B05C}"

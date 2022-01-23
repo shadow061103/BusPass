@@ -24,10 +24,10 @@ namespace BusPass.Repository.Implements
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        public async Task<List<BusRoute>> GetRouteAsync(string city)
+        public async Task<List<PtxBusRoute>> GetRouteAsync(string city)
         {
             var url = string.Format(PfxUrl.CityBusRouteUrl, city);
-            var result = await _apiHelper.GetPTXAsync<List<BusRoute>>(url);
+            var result = await _apiHelper.GetPTXAsync<List<PtxBusRoute>>(url);
             return result;
         }
 
@@ -36,10 +36,10 @@ namespace BusPass.Repository.Implements
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        public async Task<List<BusStop>> GetBusStopAsync(string city)
+        public async Task<List<PtxBusStop>> GetBusStopAsync(string city)
         {
             var url = string.Format(PfxUrl.CityBusStopUrl, city);
-            var result = await _apiHelper.GetPTXAsync<List<BusStop>>(url);
+            var result = await _apiHelper.GetPTXAsync<List<PtxBusStop>>(url);
             return result;
         }
 
@@ -48,10 +48,22 @@ namespace BusPass.Repository.Implements
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        public async Task<List<BusStation>> GetBusStationAsync(string city)
+        public async Task<List<PtxBusStation>> GetBusStationAsync(string city)
         {
             var url = string.Format(PfxUrl.CityBusStationUrl, city);
-            var result = await _apiHelper.GetPTXAsync<List<BusStation>>(url);
+            var result = await _apiHelper.GetPTXAsync<List<PtxBusStation>>(url);
+            return result;
+        }
+
+        /// <summary>
+        /// 取得指定[縣市]的市區公車營運業者資料
+        /// </summary>
+        /// <param name="city">The city.</param>
+        /// <returns></returns>
+        public async Task<List<PtxOperator>> GetBusOperator(string city)
+        {
+            var url = string.Format(PfxUrl.CityBusOperatorUrl, city);
+            var result = await _apiHelper.GetPTXAsync<List<PtxOperator>>(url);
             return result;
         }
     }

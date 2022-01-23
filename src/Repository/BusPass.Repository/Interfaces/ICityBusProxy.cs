@@ -14,20 +14,27 @@ namespace BusPass.Repository.Interfaces
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        Task<List<BusRoute>> GetRouteAsync(string city);
+        Task<List<PtxBusRoute>> GetRouteAsync(string city);
 
         /// <summary>
         /// 取得指定[縣市]的市區公車站牌資料
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        Task<List<BusStop>> GetBusStopAsync(string city);
+        Task<List<PtxBusStop>> GetBusStopAsync(string city);
 
         /// <summary>
         /// 取得指定[縣市]的市區公車站位資料
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
-        Task<List<BusStation>> GetBusStationAsync(string city);
+        Task<List<PtxBusStation>> GetBusStationAsync(string city);
+
+        /// <summary>
+        /// 取得指定[縣市]的市區公車營運業者資料
+        /// </summary>
+        /// <param name="city">The city.</param>
+        /// <returns></returns>
+        Task<List<PtxOperator>> GetBusOperator(string city);
     }
 }

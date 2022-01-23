@@ -22,5 +22,7 @@ namespace BusPass.Common.Constants
         /// 公車站位資料
         /// </summary>
         public static readonly string CityBusStationUrl = "https://ptx.transportdata.tw/MOTC/v2/Bus/Station/City/{0}?$top=30&$format=JSON";
+
+        public static readonly string CityBusOperatorUrl = "https://ptx.transportdata.tw/MOTC/v2/Bus/Operator/City/{0}?$top=30&$format=JSON";
     }
 }
