@@ -35,7 +35,7 @@ namespace BusPass.Service.Implements
         }
 
         /// <summary>
-        /// 新增公車路線資料
+        /// 新增公車路線/附屬路線資料
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>
@@ -45,26 +45,38 @@ namespace BusPass.Service.Implements
             var models = await _cityBusProxy.GetRouteAsync(city);
 
             //route
-            var routes = _mapper.Map<IEnumerable<BusRoute>>(models);
+            //var routes = _mapper.Map<IEnumerable<BusRoute>>(models);
 
-            var temp = routes.Where(c => c.RouteId == 10132);
-            res += await _busRouteRepository.AddAsync(routes);
+            //res += await _busRouteRepository.AddAsync(routes);
 
-            //route-operator mapping
-            var operators = models.SelectMany(x => x.Operators.Select(c => new BusRouteOperator
-            {
-                RouteId = long.Parse(x.RouteID),
-                OperatorId = long.Parse(c.OperatorID)
-            }));
+            ////route-operator mapping
+            //var operators = models.SelectMany(x => x.Operators.Select(c => new BusRouteOperator
+            //{
+            //    RouteId = long.Parse(x.RouteID),
+            //    OperatorId = long.Parse(c.OperatorID)
+            //}));
 
-            //todo 附屬路線新增跟業者對應
-            await _busRouteRelationRepository.AddAsync(operators);
+            //await _busRouteRelationRepository.AddAsync(operators);
 
             //subroute
-            //var subroutes = _mapper.Map<BusSubRoute>(models.Select(x => x.SubRoutes));
-            //res += await _busSubRouteRepositoey.AddAsync(subroutes);
-            //operator mapping
-            //var totalCount = models.Count + models.Select(x => x.SubRoutes).Count();
+            var subroutes = models.SelectMany(x => x.SubRoutes.Select(c =>
+            {
+                var item = _mapper.Map<BusSubRoute>(c);
+                item.RouteId = long.Parse(x.RouteID);
+                return item;
+            }));
+
+            res += await _busSubRouteRepositoey.AddAsync(subroutes);
+
+            var subRouteOperators = subroutes.Where(x => x.Direction == 1)
+                .SelectMany(x => x.OperatorIds.Select(operatorId =>
+                new BusSubRouteOperator
+                {
+                    SubRouteID = x.SubRouteID,
+                    OperatorID = operatorId
+                }));
+
+            await _busRouteRelationRepository.AddAsync(subRouteOperators);
 
             return true;
         }

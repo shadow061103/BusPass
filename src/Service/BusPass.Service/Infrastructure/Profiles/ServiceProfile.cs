@@ -21,8 +21,11 @@ namespace BusPass.Service.Infrastructure.Profiles
                 .ForMember(dest => dest.FareBufferZoneDescription, opt => opt.MapFrom(s => s.FareBufferZoneDescriptionZh))
                 .ForMember(dest => dest.RouteId, opt => opt.MapFrom(s => long.Parse(s.RouteID)));
 
-            CreateMap<PtxOperator, BusOperator>();
-            CreateMap<PtxSubRoute, BusSubRoute>();
+            CreateMap<PtxSubRoute, BusSubRoute>()
+                .ForMember(dest => dest.SubRouteName, opt => opt.MapFrom(s => s.SubRouteName.Zh_tw))
+                .ForMember(dest => dest.SubRouteID, opt => opt.MapFrom(s => long.Parse(s.SubRouteID)))
+                .ForMember(dest => dest.OperatorIds, opt => opt.MapFrom(s => s.OperatorIDs.ConvertAll(c => long.Parse(c))));
+
             CreateMap<PtxOperator, BusOperator>()
                 .ForMember(dest => dest.OperatorName, opt => opt.MapFrom(s => s.OperatorName.Zh_tw))
                 .ForMember(dest => dest.OperatorID, opt => opt.MapFrom(s => long.Parse(s.OperatorID)));

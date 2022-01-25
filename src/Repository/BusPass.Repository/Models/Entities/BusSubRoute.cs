@@ -44,13 +44,13 @@ namespace BusPass.Repository.Models.Entities
         public string HolidayLastBusTime { get; set; }
 
         /// <summary>
-        ///營運業者ID
-        /// </summary>
-        public long? OperatorId { get; set; }
-
-        /// <summary>
         ///公車路線ID
         /// </summary>
         public long? RouteId { get; set; }
+
+        /// <summary>
+        /// 營運業者代號
+        /// </summary>
+        public List<long> OperatorIds { get; set; }
     }
 }

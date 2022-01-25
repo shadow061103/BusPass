@@ -3,6 +3,7 @@ using BusPass.Scheduler.Interfaces;
 using BusPass.Service.Interfaces;
 using Hangfire.Console;
 using Hangfire.Server;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,12 +20,15 @@ namespace BusPass.Scheduler.Jobs
     {
         private readonly IBusRouteService _busRouteService;
 
+        private readonly ILogger<BusInitialJob> _logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BusInitialJob"/> class.
         /// </summary>
-        public BusInitialJob(IBusRouteService busRouteService)
+        public BusInitialJob(IBusRouteService busRouteService, ILogger<BusInitialJob> logger)
         {
             _busRouteService = busRouteService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -35,15 +39,22 @@ namespace BusPass.Scheduler.Jobs
         public async Task DataInitialCreateJob(PerformContext context)
         {
             context.WriteLine($"{DateTime.Now} Start Run DataInitialCreate Job");
-
-            var res = false;
-            foreach (var city in Enum.GetNames(typeof(CityCode)))
+            try
             {
-                res = await _busRouteService.AddBusRouteAsync(city);
+                var res = false;
+                foreach (var city in Enum.GetNames(typeof(CityCode)))
+                {
+                    res = await _busRouteService.AddBusRouteAsync(city);
 
-                //res = await _busRouteService.AddBusOperator(city);
+                    //res = await _busRouteService.AddBusOperator(city);
 
-                context.WriteLine($"Add Bus Operator,city:{city},resutl:{res}");
+                    context.WriteLine($"Add Bus Operator,city:{city},resutl:{res}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                context.WriteLine($"{DateTime.Now} job failed");
             }
 
             context.WriteLine($"{DateTime.Now} End Run DataInitialCreate Job");

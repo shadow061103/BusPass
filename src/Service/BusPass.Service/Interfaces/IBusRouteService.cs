@@ -9,7 +9,7 @@ namespace BusPass.Service.Interfaces
     public interface IBusRouteService
     {
         /// <summary>
-        /// 新增公車路線資料
+        /// 新增公車路線/附屬路線資料
         /// </summary>
         /// <param name="city">The city.</param>
         /// <returns></returns>

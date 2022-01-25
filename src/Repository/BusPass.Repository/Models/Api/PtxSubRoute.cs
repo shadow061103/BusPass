@@ -47,5 +47,7 @@ namespace BusPass.Repository.Models.Api
         ///假日返程第一班發車時間
         /// </summary>
         public string HolidayLastBusTime { get; set; }
+
+        public List<string> OperatorIDs { get; set; }
     }
 }

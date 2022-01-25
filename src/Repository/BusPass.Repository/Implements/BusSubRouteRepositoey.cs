@@ -49,7 +49,6 @@ namespace BusPass.Repository.Implements
                                 [LastBusTime],
                                 [HolidayFirstBusTime],
                                 [HolidayLastBusTime],
-                                [OperatorId],
                                 [RouteId]
                             )
                             VALUES
@@ -61,7 +60,6 @@ namespace BusPass.Repository.Implements
                                 @LastBusTime,
                                 @HolidayFirstBusTime,
                                 @HolidayLastBusTime,
-                                @OperatorId,
                                 @RouteId
                              );";
     }
